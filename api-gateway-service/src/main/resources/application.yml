@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: api-gateway-service
+  config:    import:    - optional:configserver:http://localhost:8888
+#for accessing url from api gateway
+  cloud:    gateway:      discovery:        locator:          enabled: true
+          lower-case-service-id: true
+      httpserver:        wiretap: true
+      httpclient:        wiretap: true
+ 
+  sleuth:    sampler:      probability: 1.0
+      
+eureka:
+  client:
+    service-url:
+      default-zone : http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+
+server:  port: 8765         

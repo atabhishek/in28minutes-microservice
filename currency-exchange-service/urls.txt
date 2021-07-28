@@ -1,0 +1,31 @@
+http://localhost:8000/currency-exchange/from/USD/to/INR
+http://localhost:8001/currency-exchange/from/USD/to/INR
+http://localhost:8002/currency-exchange/from/USD/to/INR
+
+
+http://localhost:8100/currency-conversion/from/AUD/to/INR?quantity=999
+http://localhost:8100/currency-conversion/feign/from/EUR/to/INR?quantity=999
+
+
+Eureka
+http://localhost:8761/
+
+API GATEWAY:
+http://localhost:8765/
+
+Using Api GATEWAY
+http://localhost:8765/CURRENCY-EXCHANGE-SERVICE/currency-exchange/from/USD/to/INR
+http://localhost:8765/CURRENCY-CONVERSION-SERVICE/currency-conversion/feign/from/EUR/to/INR?quantity=999
+
+#lowercase
+http://localhost:8765/currency-exchange-service/currency-exchange/from/USD/to/INR
+http://localhost:8765/currency-conversion-service/currency-conversion/from/EUR/to/INR?quantity=30
+http://localhost:8765/currency-conversion-service/currency-conversion/feign/from/EUR/to/INR?quantity=999
+
+
+
+http://localhost:8765/currency-exchange/from/USD/to/INR
+http://localhost:8765/currency-conversion/feign/from/EUR/to/INR?quantity=999
+http://localhost:8765/currency-conversion-feign/from/EUR/to/INR?quantity=1000
+
+
