@@ -10,16 +10,17 @@ public class APIGatewayConfiguration {
 
 	@Bean
 	public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
-
 		return builder.routes()
 				.route(p -> p.path("/get")
-						.filters(f -> f.addRequestHeader("MyHeader", "MyURI").addRequestParameter("Param", "Myvalue"))
+						.filters(f -> f.addRequestHeader("MyHeader", "MyURI").addRequestParameter("Param", "MyValue"))
 						.uri("http://httpbin.org:80"))
-				.route(p -> p.path("/currency-exchange/**").uri("lb://CURRENCY-EXCHANGE-SERVICE/**"))
-				.route(p -> p.path("/currency-conversion/**").uri("lb://CURRENCY-CONVERSION-SERVICE/**"))
-				.route(p -> p.path("/currency-conversion-feign/**")
-						.filters(f -> f.rewritePath("/currency-conversion-feign/(?<segment>.*)","/currency-conversion/feign/${segment}"))
-						.uri("lb://CURRENCY-CONVERSION-SERVICE/**"))
+				.route(p -> p.path("/currency-exchange/**").uri("lb://currency-exchange-service"))
+				.route(p -> p.path("/currency-conversion/**").uri("lb://currency-conversion-service"))
+
+				.route(p -> p.path("/currency-conversion-new/**")
+						.filters(f -> f.rewritePath("/currency-conversion-new/(?<segment>.*)",
+								"/currency-conversion/feign/${segment}"))
+						.uri("lb://currency-conversion-service"))
 				.build();
 	}
 
